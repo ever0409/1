@@ -39,7 +39,7 @@ local function check_member_super(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-	  local text = '💿#SuperGP Added By '..msg.from.first_name
+	  local text = 'SuperGroup has been added!'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -63,7 +63,7 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-	  local text = '💿#SuperGP Rmoved By '..msg.from.first_name
+	  local text = 'SuperGroup has been removed'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -104,10 +104,10 @@ end
 
 --Get and output info about supergroup
 local function callback_info(cb_extra, success, result)
-local title ="⚡#SuperGP Info: ["..result.title.."]\n\n"
-local admin_num = "⚡Admin Count: "..result.admins_count.."\n"
-local user_num = "⚡User Count: "..result.participants_count.."\n"
-local kicked_num = "⚡Kicked User count: "..result.kicked_count.."\n"
+local title ="Info for SuperGroup: ["..result.title.."]\n\n"
+local admin_num = "Admin count: "..result.admins_count.."\n"
+local user_num = "User count: "..result.participants_count.."\n"
+local kicked_num = "Kicked user count: "..result.kicked_count.."\n"
 local channel_id = "ID: "..result.peer_id.."\n"
 if result.username then
 	channel_username = "Username: @"..result.username
@@ -179,11 +179,11 @@ local function lock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == '🔒' then
-    return '⚡#Link Locked By '..msg.from.first_name
+    return '🗣Link posting is already locked🌟'
   else
     data[tostring(target)]['settings']['lock_link'] = '🔒'
     save_data(_config.moderation.data, data)
-    return '⚡#Link Locked'
+    return '🗣Link posting has been locked🌟'
   end
 end
 
@@ -193,11 +193,11 @@ local function unlock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == '🔓' then
-    return '⚡#Link Unlocked By '..msg.from.first_name
+    return '🗣Link posting is not locked🏵'
   else
     data[tostring(target)]['settings']['lock_link'] = '🔓'
     save_data(_config.moderation.data, data)
-    return '⚡#Link Unlocked'
+    return '🗣Link posting has been unlocked🏵'
   end
 end
 
