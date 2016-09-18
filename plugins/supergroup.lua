@@ -39,7 +39,7 @@ local function check_member_super(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-	  local text = '▶️SuperGP '..msg.from.title..' Has Been Added❗️'
+	  local text = '▶️SuperGP '..msg.to.title..' Has Been Added❗️'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -63,7 +63,7 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-	  local text = '▶️SuperGP '..msg.from.title..' Has Been Removed❗️'
+	  local text = '▶️SuperGP '..msg.to.title..' Has Been Removed❗️'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
