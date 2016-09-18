@@ -404,7 +404,90 @@ will return group ban list
 *Only moderators and owner can use kick,ban,unban,newlink,link,setphoto,setname,lock,unlock,set rules,set about and settings commands
 *Only owner can use res,setowner,promote,demote and log commands
 ]],
-	help_text_super =[[]]
+	help_text_super =[[❗️SUPERGP Help❕
+〽️دریافت لیست ادمین های سوپرگروه〽️
+🌀!admins🌀
+〽️ مشاهده آیدی صاحب گروه 〽️
+🌀!owner🌀
+〽️مشاهده لیست مدیران 〽️
+🌀!modlist🌀
+〽️مشاهده لیست بات های موجود در سوپرگروه 〽️
+🌀!bots🌀
+〽️مشاهده لیست کل اعضای سوپرگروه 〽️
+🌀!who🌀
+〽️اضافه کردن شخص به لیست سیاه〽️
+🌀!block🌀
+〽️اخراج شخص از سوپرگروه〽️
+🌀!kick🌀
+〽️مسدود کردن شخص از سوپرگروه 〽️
+🌀!ban🌀
+〽️خارج کردن شخص از لیست مسدودها 〽️
+🌀!unban🌀
+〽️مشاهده آیدی سوپرگروه یا شخص 〽️
+🌀!id🌀
+〽️گرفتن آیدی شخصی که از او فوروارد شده است 〽️
+🌀!id from🌀
+〽️عوض کردن اسم گروه 〽️
+🌀!setname🌀 (name)
+〽️عوض کردن عکس گروه〽️
+🌀!setphoto🌀
+〽️قانون گذاری برای گروه 〽️
+🌀!setlaws (laws)🌀
+〽️عوض کردن متن درباره گروه 〽️
+🌀!setabout🌀
+〽️افزودن دستور و پاسخ 〽️
+🌀!save [value] <text>🌀
+〽️دریافت پاسخ دستور 〽️
+🌀!get [value]🌀
+〽️ساختن لینک جدید 〽️
+🌀!newlink🌀
+〽️دریافت لینک گروه 〽️
+🌀!link🌀
+〽️دریافت قوانین گروه 〽️
+🌀!rules🌀
+〽️قفل کردن ایتم مورد نظر 〽️
+🌀!lock [links|flood|spam|Arabic|member|rtl|sticker|contacts|strict|tag|username|fwd|reply|fosh|tgservice|leave|join|emoji|english|media|operator]🌀
+〽️بازکردن ایتم مورد نظر 〽️
+🌀!unlock [links|flood|spam|Arabic|member|rtl|sticker|contacts|strict|tag|username|fwd|reply|fosh|tgservice|leave|join|emoji|english|media|operator]🌀
+〽️بیصدا کردن فرمت ها 〽️
+🌀!mute [all|audio|gifs|photo|video|service]🌀
+〽️از حالت بیصدا خارج کردن فرمت ها 〽️
+🌀!unmute [all|audio|gifs|photo|video|service]🌀
+〽️تنظیم حساسیت اسپم 〽️
+🌀!setflood [value]🌀
+〽️تنظیم نوع گروه 〽️
+🌀!type [name]🌀
+〽️مشاهده تنظیمات گروه 〽️
+🌀!settings🌀
+〽️بیصدا کردن شخص در گروه 〽️
+🌀!silent [username]🌀
+👌برای در اوردن دوباره همین دستورو بزنید👌
+〽️لیست افراد بیصدا 〽️
+🌀!silentlist🌀
+〽️مشاهده لیست مسدود شده ها 〽️
+🌀!banlist🌀
+〽️پاک کردن پیام با ریپلی 〽️
+🌀!del🌀
+〽️افزودن کلمه به لیست کلمات غیرمجاز 〽️
+🌀!addword [word]🌀
+〽️پاک کردن کلمه از لیست کلمات غیرمجاز 〽️
+🌀!remword [word]🌀
+〽️مشاهده لیست کلمات غیرمجاز 〽️
+🌀!badwords🌀
+〽️پاک کردن تعداد پیام مورد نظر 〽️
+🌀!clean msg (number)🌀
+〽️فعال یا غیر فعال کردن عمومی بودن گروه 〽️
+🌀!public (yes|no)🌀
+〽️به دست آوردن آیدی یک شخص 〽️
+🌀!res [username]🌀
+〽️دریافت تاریخچه گروه 〽️
+🌀!log🌀
+〽️تنظیم مالک گروه 〽️
+🌀!setowner [id|username|reply]🌀
+〽️پاک کردن آیتم 〽️
+🌀!clean [mutelist|muteslist|modlist|badwords]
+👌دستورات بدون علامت هم کار میکنند👌
+👌 شما میتوانید از / و ! و # استفاده کنید 👌]]
 	
   serialize_to_file(config, './data/config.lua')
   print('saved config into ./data/config.lua')
