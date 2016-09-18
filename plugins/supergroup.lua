@@ -39,7 +39,7 @@ local function check_member_super(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-	  local text = 'SuperGroup has been added!'
+	  local text = '▶️SuperGP '..msg.from.title..' Has Been Added❗️'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -63,7 +63,7 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-	  local text = 'SuperGroup has been removed'
+	  local text = '▶️SuperGP '..msg.from.title..' Has Been Removed❗️'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -872,7 +872,7 @@ local function set_rulesmod(msg, data, target)
   local data_cat = 'rules'
   data[tostring(target)][data_cat] = rules
   save_data(_config.moderation.data, data)
-  return 'SuperGroup rules set'
+  return '▶️SuperGP Rules Set By |'..msg.from.id..'|❗️'
 end
 
 --'Get supergroup rules' function
@@ -890,7 +890,7 @@ end
 --Set supergroup to public or not public function
 local function set_public_membermod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only"
+    return "✅For Moderators Only✅"
   end
   local group_public_lock = data[tostring(target)]['settings']['public']
   local long_id = data[tostring(target)]['long_id']
@@ -1104,7 +1104,7 @@ local function modlist(msg)
     return 'No moderator in this group.'
   end
   local i = 1
-  local message = '\nList of moderators for ' .. string.gsub(msg.to.print_name, '_', ' ') .. ':\n'
+  local message = '\n✅List Of Moderators For ' .. string.gsub(msg.to.print_name, '_', ' ') .. ':\n'
   for k,v in pairs(data[tostring(msg.to.id)]['moderators']) do
     message = message ..i..' - '..v..' [' ..k.. '] \n'
     i = i + 1
@@ -1263,10 +1263,10 @@ function get_message_callback(extra, success, result)
 		print(chat_id)
 		if is_muted_user(chat_id, user_id) then
 			unmute_user(chat_id, user_id)
-			send_large_msg(receiver, "["..user_id.."] removed from the muted user list")
+			send_large_msg(receiver, "["..user_id.."] ▶removed from the muted user list◀")
 		elseif is_admin1(msg) then
 			mute_user(chat_id, user_id)
-			send_large_msg(receiver, " ["..user_id.."] added to the muted user list")
+			send_large_msg(receiver, " ["..user_id.."] ▶added to the muted user list◀")
 		end
 	end
 end
@@ -1399,7 +1399,7 @@ local function callbackres(extra, success, result)
 		local user_id = "user#id"..result.peer_id
 		local channel_id = extra.channel
 		if is_admin2(result.peer_id) then
-			return send_large_msg(channel_id, "You can't demote global admins!")
+			return send_large_msg(channel_id, "You can't demote global admins :|")
 		end
 		channel_demote(channel_id, user_id, ok_cb, false)
 		if result.username then
@@ -1418,10 +1418,10 @@ local function callbackres(extra, success, result)
 		local chat_id = string.gsub(receiver, 'channel#id', '')
 		if is_muted_user(chat_id, user_id) then
 			unmute_user(chat_id, user_id)
-			send_large_msg(receiver, " ["..user_id.."] removed from muted user list")
+			send_large_msg(receiver, " ["..user_id.."] ▶removed from muted user list◀")
 		elseif is_owner(extra.msg) then
 			mute_user(chat_id, user_id)
-			send_large_msg(receiver, " ["..user_id.."] added to muted user list")
+			send_large_msg(receiver, " ["..user_id.."] ▶added to muted user list◀")
 		end
 	end
 end
@@ -1438,9 +1438,9 @@ local function in_channel_cb(cb_extra, success, result)
   local member = cb_extra.username
   local memberid = cb_extra.user_id
   if member then
-    text = 'No user @'..member..' in this SuperGroup.'
+    text = 'No user @'..member..' in this SuperGroup :|'
   else
-    text = 'No user ['..memberid..'] in this SuperGroup.'
+    text = 'No user ['..memberid..'] in this SuperGroup :|'
   end
 if get_cmd == "channel_block" then
   for k,v in pairs(result) do
@@ -1454,10 +1454,10 @@ if get_cmd == "channel_block" then
         return send_large_msg("channel#id"..channel_id, "Leave using kickme command")
       end
       if is_momod2(user_id, channel_id) and not is_admin2(sender) then
-        return send_large_msg("channel#id"..channel_id, "You can't kick mods/owner/admins")
+        return send_large_msg("channel#id"..channel_id, "You can't kick mods/owner/admins :|")
       end
       if is_admin2(user_id) then
-        return send_large_msg("channel#id"..channel_id, "You can't kick other admins")
+        return send_large_msg("channel#id"..channel_id, "You can't kick other admins :|")
       end
       if v.username then
         text = ""
@@ -1517,9 +1517,9 @@ elseif get_cmd == "setadmin" then
 					save_data(_config.moderation.data, data)
 					savelog(channel, name_log.."["..from_id.."] set ["..v.peer_id.."] as owner by username")
 				if result.username then
-					text = member_username.." ["..v.peer_id.."] added as owner"
+					text = member_username.." ["..v.peer_id.."] Added As Owner❗"
 				else
-					text = "["..v.peer_id.."] added as owner"
+					text = "["..v.peer_id.."] Added As Owner❗"
 				end
 			end
 		elseif memberid and vusername ~= member and vpeer_id ~= memberid then
@@ -1534,7 +1534,7 @@ elseif get_cmd == "setadmin" then
 				data[tostring(channel)]['set_owner'] = tostring(memberid)
 				save_data(_config.moderation.data, data)
 				savelog(channel, name_log.."["..from_id.."] set ["..memberid.."] as owner by username")
-				text = "["..memberid.."] added as owner"
+				text = "["..memberid.."] Added As Owner❗"
 			end
 		end
 	end
@@ -1558,7 +1558,7 @@ local function set_supergroup_photo(msg, success, result)
     channel_set_photo(receiver, file, ok_cb, false)
     data[tostring(msg.to.id)]['settings']['set_photo'] = file
     save_data(_config.moderation.data, data)
-    send_large_msg(receiver, 'Photo saved!', ok_cb, false)
+    send_large_msg(receiver, 'Photo Set For Group |'..msg.to.title..'|', ok_cb, false)
   else
     print('Error downloading: '..msg.id)
     send_large_msg(receiver, 'Failed, please try again!', ok_cb, false)
@@ -1594,7 +1594,7 @@ local function run(msg, matches)
 				return
 			end
 			if is_super_group(msg) then
-				return reply_msg(msg.id, '🗣SuperGroup is already added.👁', ok_cb, false)
+				return reply_msg(msg.id, '▶️SuperGP Is Already Added❗️', ok_cb, false)
 			end
 			print("SuperGroup "..msg.to.print_name.."("..msg.to.id..") added")
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] added SuperGroup")
@@ -1605,7 +1605,7 @@ local function run(msg, matches)
 
 		if matches[1] == 'rem' and is_admin1(msg) and not matches[2] then
 			if not is_super_group(msg) then
-				return reply_msg(msg.id, 'SuperGroup is not added.', ok_cb, false)
+				return reply_msg(msg.id, '▶SuperGP Is Not Added❗', ok_cb, false)
 			end
 			print("SuperGroup "..msg.to.print_name.."("..msg.to.id..") removed")
 			superrem(msg)
@@ -1638,7 +1638,7 @@ local function run(msg, matches)
 				return "no owner,ask admins in support groups to set owner for your SuperGroup"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] used /owner")
-			return "🗣SuperGroup owner is ["..group_owner..']'
+			return "▶SuperGP Owner Is ["..group_owner..']'
 		end
 
 		if matches[1] == "modlist" then
@@ -1736,7 +1736,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return "👤Specifications Member👤\n🔅Your Name : " ..string.gsub(msg.from.print_name, "_", " ").. "\n🔅Your ID : "..msg.from.id.."\n🔅Your UserName : @"..(msg.from.username or '----').."\n➖➖➖➖➖➖➖➖➖➖➖\n👥Specifications Group👥\n🔆 SuperGroup Name : " ..string.gsub(msg.to.print_name, "_", " ").. "\n🔆SuperGroup ID : "..msg.to.id
+				return "ℹ️About #"..msg.from.first_name.."ℹ️\n🔶Your ID: |"..msg.from.id.."|\n🔷Your User: |@"..msg.from.username.."|\n🔶Your Name: |"..msg.from.first_name.."|\n🔷Your CMD: |"..msg.text.."|\n➖➖➖➖➖➖➖➖➖➖\nℹ️About #"..msg.to.title.."ℹ️\n🔷GPID: |"..msg.to.id.."|\n🔶GPNAME: |"..msg.to.title.."|"
       end
 		end
 
@@ -1767,14 +1767,14 @@ local function run(msg, matches)
 		if matches[1] == 'setlink' and is_owner(msg) then
 			data[tostring(msg.to.id)]['settings']['set_link'] = 'waiting'
 			save_data(_config.moderation.data, data)
-			return '🗣Please Send The New Group Link Now🌟'
+			return '🗣Please Send The New Group Link Now❗'
 		end
 
 		if msg.text then
 			if msg.text:match("^(https://telegram.me/joinchat/%S+)$") and data[tostring(msg.to.id)]['settings']['set_link'] == 'waiting' and is_owner(msg) then
 				data[tostring(msg.to.id)]['settings']['set_link'] = msg.text
 				save_data(_config.moderation.data, data)
-				return "🗣New Link Set🌟"
+				return "▶New Link Set For Group |"..msg.to.title.."|"
 			end
 		end
 
@@ -1787,7 +1787,7 @@ local function run(msg, matches)
 				return "Create a link using /newlink first!\n\nOr if I am not creator use /setlink to set your link"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
-			return "🗣Group Link:👇🏻\n➖➖➖➖➖➖➖➖➖➖➖\n"..group_link
+			return "▶️Link For Group |"..msg.to.title.."|◀️\n▶️ "..group_link.." ◀️"
 		end
 
 		if matches[1] == "invite" and is_sudo(msg) then
