@@ -242,6 +242,7 @@ function create_config( )
     "lock_media",
     "lock_operator",
     "lock_username",
+    "lock_links",
     "lock_tag",
     "lock_reply",
     "rmsg",
@@ -253,23 +254,16 @@ function create_config( )
     },
     sudo_users = {80182995},--Sudo users
     moderation = {data = 'data/moderation.json'},
-    about_text = [[MeGa shield v2.9
-An advanced administration bot based on TG-CLI written in Lua
-Github:
-https://github.com/hafez16/mega-shield
-Admins:
-@hafez1116hafez [Developer]
-@amirho3ien911 [Developer]
-@Eblis_alone [Manager]
-@Mmd_hei [sponsor]
-Special thanks to
-SEEDTEAM
-Hextor team
-Magic team
-Avira team
-Our channels
-@shieldTM [persian]
-]],
+    about_text = [[ℹ️About #PowerupPlus Teamℹ️
+▶️Team #Member◀️
+1= @Mr_Nitro [Dev]
+2 = @XHACKERX [Dev]
+3 = @Navid_Quick [Dev]
+4 = @This_Is_Pouria [Dev]
+5 = @SeedPower [Bot Number And Editor]
+6 = @Mrhackers [Bot Server And Sudo]
+🆔Power➕ = @PowerupPlus
+🆔Channel Power Team : @PowerupTG_CH]],
     help_text_realm = [[
 Realm Commands:
 !creategroup [Name]
