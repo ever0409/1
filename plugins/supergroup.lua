@@ -2628,7 +2628,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'help' and not is_owner(msg) then
-			text = "✍🏻Help For Members✍🏻\n1⃣ تبدیل عکس به استیکر با ریپلی\n!sticker\n2⃣ تبدیل استیکر به عکس با ریپلی\n!photo\n3⃣ دریافت جوک\n!joke\n4⃣ گرفتن فال حافظ\n!fal\n5⃣ درخواست فیلم در اپارات\n!aparat addres\n6⃣ اب و هوای شهر دلخواه\n!weather city\n7⃣ گرفتن اسکرین شات از سایت دلخواه\n!webshot addres\n8⃣ زمان دقیق ایران\n!time\n9⃣ تاریخ دقیق\n!date\n🔟 ترجمه متن\n!tr en.fa TEXT\n1⃣1⃣ نوشته به استیکر با طرح های مختلف\n!sticker TEXT red bold\n2⃣1⃣ بارکد متن دلخواه\n!qr TEXT\n3⃣1⃣ دریافت نرخ گروه ها\n!nerkh\n4⃣1⃣ دریافت موزیک\n!music TEXT\n5⃣1⃣ دریافت اطلاعات خود\nMe\n6⃣1⃣ دریافت قیمت طلا و سکه و دلار\n!arz\n7⃣1⃣ عدد ابجد اسمتان\n!abjad NAME\n➖➖➖➖➖➖➖➖➖➖➖\n🤖NAME BOT : POWERUP\n🆔ID BOT : @POWERUPTG\n🆔ID CHANNEL : @PoWerUpTG_CH"
+			text = "راهنمای مخصوص ممبر به زودی نوشته میشود"
 			reply_msg(msg.id, text, ok_cb, false)
 		elseif matches[1] == 'help' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)
