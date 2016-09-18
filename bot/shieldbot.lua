@@ -242,7 +242,6 @@ function create_config( )
     "lock_media",
     "lock_operator",
     "lock_username",
-    "lock_links",
     "lock_tag",
     "lock_reply",
     "rmsg",
